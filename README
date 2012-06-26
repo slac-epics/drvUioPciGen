@@ -1,0 +1,49 @@
+drvUioPciGen:
+
+	This is a small software layer for interfacing devlib2/PCI to
+    devBusMapped.
+
+    The driver implements a function
+
+		int drvUioPciGenRegisterDevice(
+			epicsUInt32 vendor_id,
+			epicsUInt32 device_id,
+			epicsUInt32 subvendor_id,
+			epicsUInt32 subdevice_id,
+			int         instance,  /* zero-based */
+			epicsUInt32 bar_bitmask,
+			const char  *name_prefix
+		);
+
+    which scans the PCI bus for a given instance of a PCI device
+    with the specified vendor_id/device_id/subvendor_id/subdevice_id
+    signature. The first instance has index zero, i.e., in order
+    to register the third instance of a device with the given
+    signature 'instance' must be set to '2'.
+
+    'bar_bitmask' represents the set of BAR registers (supported by
+    devlib2) which should be registered with devBusMapped.
+
+    'name_prefix' is an arbitrary (alpha-numerical) prefix
+    which is used when registering a device with devBusMapped.
+
+    If a device is found then the requested BARs are registered
+    with devBusMapped as
+
+     <name_prefix> <instance> '.' <bar>
+
+    E.g., if 'name_prefix' == "my_dev", 'instance' == 2 and
+    'bar_bitmap' == 5 then BARs 0 and 2 (1<<0 | 1<<2 == 5)
+	are registered with devBusMapped as
+
+         my_dev2.0
+         my_dev2.2
+
+    Only existing (memory) BARs are registered.
+
+    The routine also supports an 'instance' less than zero which instructs
+    the routine to register *all* instances that are found when scanning
+    the PCI bus.
+
+    RETURN VALUE: the number of devices found (which may be zero) or a
+                  negative number if an error occurred.
