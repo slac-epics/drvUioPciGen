@@ -47,3 +47,7 @@ drvUioPciGen:
 
     RETURN VALUE: the number of devices found (which may be zero) or a
                   negative number if an error occurred.
+
+    Devices may be registered e.g., from driver 'init' functions, from
+    devsup 'init' functions of from iocsh (the above routine is also
+    registered with iocsh).
