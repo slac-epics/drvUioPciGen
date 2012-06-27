@@ -1,6 +1,6 @@
 #ifndef DRV_UIO_PCI_GEN_H
 #define DRV_UIO_PCI_GEN_H
-/* $Id$ */
+/* $Id: drvUioPciGen.h,v 1.1.1.1 2012/06/26 20:43:07 strauman Exp $ */
 
 /* EPICS driver to layer between (patched) UIO pci generic driver and devBusMapped */
 
@@ -51,8 +51,21 @@ int drvUioPciGenRegisterDevice(
  * the corresponding epicsPCIDevice or NULL if none is found.
  */
 epicsShareFunc
-epicsPCIDevice *
+const epicsPCIDevice *
 drvUioPciGenFindDev(const char *name);
+
+/* Write to or read from register offset 'off' of device 'nm'
+ *
+ * 'width' may be -4, -2, -1, 1, 2 or 4; the sign indicates
+ * direction of the data transfer (<0 -> write to device).
+ *
+ * RETURNS: 0 on success nonzero on error.
+ *
+ * NOTE: Access/offset must be aligned to 'width'.
+ */
+epicsShareFunc
+int
+drvUioPciGenRW(const char *nm, epicsUInt32 *val_p, unsigned off, unsigned width);
 
 #ifdef __cplusplus
 }
