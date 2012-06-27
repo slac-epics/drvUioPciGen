@@ -1,6 +1,6 @@
 #ifndef DRV_UIO_PCI_GEN_H
 #define DRV_UIO_PCI_GEN_H
-/* $Id: drvUioPciGen.h,v 1.1.1.1 2012/06/26 20:43:07 strauman Exp $ */
+/* $Id: drvUioPciGen.h,v 1.2 2012/06/27 20:56:46 strauman Exp $ */
 
 /* EPICS driver to layer between (patched) UIO pci generic driver and devBusMapped */
 
@@ -65,7 +65,7 @@ drvUioPciGenFindDev(const char *name);
  */
 epicsShareFunc
 int
-drvUioPciGenRW(const char *nm, epicsUInt32 *val_p, unsigned off, unsigned width);
+drvUioPciGenRW(const char *nm, epicsUInt32 *val_p, unsigned off, int width);
 
 #ifdef __cplusplus
 }
