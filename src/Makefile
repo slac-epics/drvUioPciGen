@@ -29,7 +29,9 @@ uioPciGenTest_DBD += epicspci.dbd
 uioPciGenTest_DBD += drvUioPciGen.dbd
 
 uioPciGenTest_SRCS += uioPciGenTest_registerRecordDeviceDriver.cpp
-uioPciGenTest_SRCS += uioPciGenMain.c
+uioPciGenTest_SRCS_DEFAULT += uioPciGenMain.c
+uioPciGenTest_SRCS_RTEMS   += -nil-
+uioPciGenTest_SRCS_vxWorks += -nil-
 
 uioPciGenTest_LIBS  = $(EPICS_BASE_IOC_LIBS) drvUioPciGen epicspci devBusMapped 
 
