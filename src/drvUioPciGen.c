@@ -119,13 +119,14 @@ DrvUioPciGenPvt *pvt;
 
 epicsShareFunc
 int
-drvUioPciGenRW(const char *nm, epicsUInt32 *val_p, unsigned off, unsigned width)
+drvUioPciGenRW(const char *nm, epicsUInt32 *val_p, unsigned off, int width)
 {
 DevBusMappedDev  dev;
 DrvUioPciGenPvt *pvt;
 epicsUInt32     barl;
 int             wr   = width < 0;
 int             rval = 0;
+volatile void   *addr;
 
 	width = abs(width);
 
@@ -149,28 +150,30 @@ int             rval = 0;
 		errlogPrintf("Error: Misaligned offset!\n");
 	}
 
+	addr = dev->baseAddr + off;
+
 	switch ( width ) {
 		case 1:
 			if ( wr ) {
-				iowrite8( dev->baseAddr, (epicsUInt8)*val_p );
+				iowrite8( addr, (epicsUInt8)*val_p );
 			} else {
-				*val_p = ioread8( dev->baseAddr );
+				*val_p = ioread8( addr );
 			}
 		break;
 
 		case 2:
 			if ( wr ) {
-				le_iowrite16( dev->baseAddr, (epicsUInt16)*val_p );
+				le_iowrite16( addr, (epicsUInt16)*val_p );
 			} else {
-				*val_p = le_ioread16( dev->baseAddr );
+				*val_p = le_ioread16( addr );
 			}
 		break;
 
 		case 4:
 			if ( wr ) {
-				le_iowrite32( dev->baseAddr, *val_p );
+				le_iowrite32( addr, *val_p );
 			} else {
-				*val_p = le_ioread32( dev->baseAddr );
+				*val_p = le_ioread32( addr );
 			}
 		break;
 			
@@ -313,7 +316,7 @@ static const struct iocshArg args1[] = {
 };
 
 static const struct iocshArg *bloat1[] = {
-	args1, args1+1
+	args1, args1+1, args1+2
 };
 
 static const struct iocshFuncDef fn1Desc[] = {
@@ -331,7 +334,7 @@ static const struct iocshFuncDef fn1Desc[] = {
 	epicsUInt32 val;	\
 		if ( wid < 0 )  \
 			val = args[2].ival; \
-		if ( 0 == drvUioPciGenRW( args[0].sval, &val, args[1].ival, 1) && wid >= 0 ) { \
+		if ( 0 == drvUioPciGenRW( args[0].sval, &val, args[1].ival, wid) && wid >= 0 ) { \
 			errlogPrintf("0x%08x (%u)\n", val, val); \
 		} \
 	}
