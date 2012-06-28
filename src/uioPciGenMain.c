@@ -10,14 +10,14 @@ int
 main(int argc, const char *argv[])
 {
 #ifdef HAVE_CEXP
-	cexp_main(argc,argv);
+	cexp_main(argc, argv);
 #else
     if(argc>=2) {    
         iocsh(argv[1]);
         epicsThreadSleep(.2);
     }
-#endif
     iocsh(NULL);
+#endif
     epicsExit(0);
     return(0);
 }
