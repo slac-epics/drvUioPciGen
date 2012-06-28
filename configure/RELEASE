@@ -10,12 +10,6 @@
 include $(TOP)/RELEASE_SITE
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
-# ==================================================================================
-# If using macro substitutions, point MSI at the binary:
-EXTENSIONS_MODULE_VERSION=extensions-3.14.10
-#MSI=$(EPICS_SITE_TOP)/extensions/$(EXTENSIONS_MODULE_VERSION)/bin/$(EPICS_HOST_ARCH)/msi
-# ==================================================================================
-
 # =============================================================
 # Define location of module tree with respect to
 # EPICS_SITE_TOP
