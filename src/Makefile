@@ -26,6 +26,7 @@ drvUioPciGen_SRCS += drvUioPciGen.c
 
 uioPciGenTest_DBD  = base.dbd
 uioPciGenTest_DBD += epicspci.dbd
+uioPciGenTest_DBD += devBusMapped.dbd
 uioPciGenTest_DBD += drvUioPciGen.dbd
 
 uioPciGenTest_SRCS += uioPciGenTest_registerRecordDeviceDriver.cpp
