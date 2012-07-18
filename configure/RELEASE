@@ -20,10 +20,10 @@ EPICS_MODULES=$(MODULES_SITE_TOP)
 # Define the version of modules needed by
 # IOC apps or other Support apps
 # =============================================================
-DEVBUSMAPPED_MODULE_VERSION=Devl
-MISCUTILS_MODULE_VERSION=Devl
-DEVLIB2_MODULE_VERSION=Devl
-CEXPSH_MODULE_VERSION=Devl
+DEVBUSMAPPED_MODULE_VERSION=devBusMapped-R3-1-0
+MISCUTILS_MODULE_VERSION=miscUtils-R2-2-2
+DEVLIB2_MODULE_VERSION=strauman_hg_R1_0_0
+CEXPSH_MODULE_VERSION=MAIN_TRUNK
 
 # ============================================================
 # External Support
