@@ -22,7 +22,7 @@ EPICS_MODULES=$(MODULES_SITE_TOP)
 # =============================================================
 DEVBUSMAPPED_MODULE_VERSION=devBusMapped-R3-1-0
 MISCUTILS_MODULE_VERSION=miscUtils-R2-2-2
-DEVLIB2_MODULE_VERSION=strauman_hg_R1_0_0
+DEVLIB2_MODULE_VERSION=devlib2-R3-0-0_1-0
 CEXPSH_MODULE_VERSION=MAIN_TRUNK
 
 # ============================================================
