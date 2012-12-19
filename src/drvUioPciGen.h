@@ -1,6 +1,6 @@
 #ifndef DRV_UIO_PCI_GEN_H
 #define DRV_UIO_PCI_GEN_H
-/* $Id: drvUioPciGen.h,v 1.2 2012/06/27 20:56:46 strauman Exp $ */
+/* $Id: drvUioPciGen.h,v 1.3 2012/06/27 22:12:59 strauman Exp $ */
 
 /* EPICS driver to layer between (patched) UIO pci generic driver and devBusMapped */
 
@@ -12,7 +12,8 @@ extern "C" {
 #include <shareLib.h>
 #include <devLibPCI.h>
 
-#define DRVUIOPCIGEN_ANY_ID (0x80000000)
+#define DRVUIOPCIGEN_ANY_ID ((epicsInt32)-1)
+#define DRVUIOPCIGEN_PCISIG(b,d,f) ( (1<<31) | ((b)<<8) | (((d)&0x1f)<<3) | ((f)&7) )
 
 /* Register a given PCI device/instance with devBusMapped.
  * 
@@ -34,6 +35,8 @@ extern "C" {
  *
  * RETURNS: Number of devices found or a negative number if an error 
  *          occurred.
+ *
+ * NOTE:    This routine is not thread-safe! Normal use from an initialization script...
  */
 epicsShareFunc
 int drvUioPciGenRegisterDevice(
@@ -41,7 +44,7 @@ int drvUioPciGenRegisterDevice(
 		epicsUInt32 device_id,
 		epicsUInt32 subvendor_id,
 		epicsUInt32 subdevice_id,
-		int         instance,  /* zero-based */
+		epicsInt32  filter,  /* zero-based */
 		epicsUInt32 bar_bitmask,
 		const char  *name_prefix
 	);

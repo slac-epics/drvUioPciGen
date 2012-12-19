@@ -10,16 +10,21 @@ drvUioPciGen:
 			epicsUInt32 device_id,
 			epicsUInt32 subvendor_id,
 			epicsUInt32 subdevice_id,
-			int         instance,  /* zero-based */
+			int         filter,
 			epicsUInt32 bar_bitmask,
 			const char  *name_prefix
 		);
 
     which scans the PCI bus for a given instance of a PCI device
-    with the specified vendor_id/device_id/subvendor_id/subdevice_id
-    signature. The first instance has index zero, i.e., in order
+    with the specified vendor_id/device_id/subvendor_id/subdevice_id.
+    The 'filter' parameter selects a particular instance of identical
+    devices.  The first instance has index zero, i.e., in order
     to register the third instance of a device with the given
-    signature 'instance' must be set to '2'.
+    signature 'filter' must be set to '2'.
+
+    Alternatively (when the MSBit is set), the 'filter' may also
+    specify a 'bus/device/function' signature:
+        (1<<31) | (bus<<8) | (device<<3) | function.
 
     'bar_bitmask' represents the set of BAR registers (supported by
     devlib2) which should be registered with devBusMapped.
@@ -41,7 +46,7 @@ drvUioPciGen:
 
     Only existing (memory) BARs are registered.
 
-    The routine also supports an 'instance' less than zero which instructs
+    The routine also supports a 'filter' of '-1' which instructs
     the routine to register *all* instances that are found when scanning
     the PCI bus.
 

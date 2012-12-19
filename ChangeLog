@@ -1,0 +1,6 @@
+20121219 (T.S.):
+ - sort device list in order of PCI bus/dev/fun. 'instance' is counted
+   in this order.
+ - also accept a bus/dev/fun signature as a 'filter':
+   (1<<31) | (bus<<8) | (dev<<3) | (fun)
+ - added EPICS driver entry point with 'report' function.

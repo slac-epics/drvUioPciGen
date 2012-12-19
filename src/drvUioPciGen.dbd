@@ -1,1 +1,2 @@
 registrar(drvUioPciGenRegistrar)
+driver(drvUioPciGen)
