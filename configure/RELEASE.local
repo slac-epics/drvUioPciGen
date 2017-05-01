@@ -19,8 +19,8 @@
 # Don't set your version to anything such as "test" that
 # could match a directory name.
 # ==========================================================
-DEVBUSMAPPED_MODULE_VERSION=R3.2.2
-MISCUTILS_MODULE_VERSION=R2.2.4
+DEVBUSMAPPED_MODULE_VERSION=R3.2.3
+MISCUTILS_MODULE_VERSION=R2.2.5
 DEVLIB2_MODULE_VERSION=R2.8-0.1.0
 CEXPSH_MODULE_VERSION=R1.0.1
 
