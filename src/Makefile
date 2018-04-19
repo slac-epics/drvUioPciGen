@@ -37,6 +37,7 @@ uioPciGenTest_SRCS_vxWorks += -nil-
 uioPciGenTest_LIBS  = $(EPICS_BASE_IOC_LIBS)
 uioPciGenTest_LIBS += drvUioPciGen epicspci devBusMapped 
 uioPciGenTest_LIBS += $(CEXP_LIBS)
+uioPciGenTest_SYS_LIBS += $(CEXP_SYS_LIBS)
 
 #===========================
 

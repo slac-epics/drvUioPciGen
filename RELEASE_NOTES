@@ -1,3 +1,5 @@
+R1.1.2:     18-Apr-2018, Till Straumann
+    Upgrade cexpsh to R1.1.2
 R1.1.1:     01-May-2017, Marcio Donadio
     Changed RELEASE.local to use miscUtils 2.2.5 and devBusMapped R3.2.3
 

@@ -7,7 +7,7 @@
 
 
 int
-main(int argc, const char *argv[])
+main(int argc, char *argv[])
 {
 #ifdef HAVE_CEXP
 	cexp_main(argc, argv);
