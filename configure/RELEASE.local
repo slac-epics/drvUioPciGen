@@ -22,7 +22,6 @@
 DEVBUSMAPPED_MODULE_VERSION=R3.2.3
 MISCUTILS_MODULE_VERSION=R2.2.5
 DEVLIB2_MODULE_VERSION=R2.10-0.1.0
-CEXPSH_MODULE_VERSION=R1.1.2
 
 # ==========================================================
 # Define module paths using pattern
@@ -33,7 +32,6 @@ CEXPSH_MODULE_VERSION=R1.1.2
 DEVBUSMAPPED=$(EPICS_MODULES)/devBusMapped/$(DEVBUSMAPPED_MODULE_VERSION)
 MISCUTILS=$(EPICS_MODULES)/miscUtils/$(MISCUTILS_MODULE_VERSION)
 DEVLIB2=$(EPICS_MODULES)/devlib2/$(DEVLIB2_MODULE_VERSION)
-CEXPSH=$(EPICS_MODULES)/cexpsh/$(CEXPSH_MODULE_VERSION)
 
 # ============================================================
 #  Module Location

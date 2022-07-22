@@ -24,3 +24,6 @@ CROSS_COMPILER_TARGET_ARCHS = $(sort $(notdir $(wildcard $(DEVBUSMAPPED)/lib/*))
 # If you don't want to install into $(TOP) then
 # define INSTALL_LOCATION here
 #INSTALL_LOCATION=<fullpathname>
+
+# Uncomment to build test IOC Application located in $TOP/iocs
+#BUILD_IOCS = YES
